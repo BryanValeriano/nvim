@@ -42,3 +42,10 @@ vim.api.nvim_create_autocmd("InsertLeave", {
 
 -- Add asterisks in block comments
 vim.opt.formatoptions:append { 'r' }
+
+vim.api.nvim_create_autocmd("BufNewFile", {
+  pattern = "*.cpp",
+  command = "0r ~/.base.cpp"
+})
+
+
