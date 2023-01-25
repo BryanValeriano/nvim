@@ -1,5 +1,5 @@
 local status, telescope = pcall(require, "telescope")
-gif (not status) then return end
+if (not status) then return end
 local actions = require('telescope.actions')
 local builtin = require("telescope.builtin")
 
