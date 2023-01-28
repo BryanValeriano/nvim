@@ -48,4 +48,8 @@ vim.api.nvim_create_autocmd("BufNewFile", {
   command = "0r ~/.base.cpp"
 })
 
+vim.api.nvim_create_autocmd("BufWritePre", {
+  pattern = '*',
+  command = "lua vim.lsp.buf.format()"
+})
 
