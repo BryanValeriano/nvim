@@ -1,8 +1,8 @@
 require("tokyonight").setup({
-    transparent = true,
-    styles = {
-       sidebars = "transparent",
-       floats = "transparent",
-    }
+  transparent = true,
+  styles = {
+    sidebars = "transparent",
+    floats = "transparent",
+  }
 })
-vim.cmd[[colorscheme tokyonight]]
+--vim.cmd [[colorscheme tokyonight-moon]]
