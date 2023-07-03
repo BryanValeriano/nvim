@@ -32,12 +32,12 @@ packer.startup(function(use)
     }
   }
 
-  use 'kyazdani42/nvim-web-devicons' -- File icons
-  use 'nvim-lualine/lualine.nvim' -- Statusline
-  use 'nvim-lua/plenary.nvim' -- Common utilities
-  use 'onsails/lspkind-nvim' -- vscode-like pictograms
+  use 'kyazdani42/nvim-web-devicons'    -- File icons
+  use 'nvim-lualine/lualine.nvim'       -- Statusline
+  use 'nvim-lua/plenary.nvim'           -- Common utilities
+  use 'onsails/lspkind-nvim'            -- vscode-like pictograms
   use 'jose-elias-alvarez/null-ls.nvim' -- Use Neovim as a language server to inject LSP diagnostics, code actions, and more via Lua
-  use 'MunifTanjim/prettier.nvim' -- Prettier plugin for Neovim's built-in LSP client
+  use 'MunifTanjim/prettier.nvim'       -- Prettier plugin for Neovim's built-in LSP client
 
   use('nvim-treesitter/nvim-treesitter', { run = ':TSUpdate' })
 
@@ -53,9 +53,10 @@ packer.startup(function(use)
     requires = {
       'nvim-tree/nvim-web-devicons', -- optional, for file icons
     },
-    tag = 'nightly' -- optional, updated every week. (see issue #1193)
+    tag = 'nightly'                  -- optional, updated every week. (see issue #1193)
   }
   use 'folke/tokyonight.nvim'
   use "rebelot/kanagawa.nvim"
   use 'ThePrimeagen/harpoon'
+  use 'f-person/git-blame.nvim'
 end)
