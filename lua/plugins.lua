@@ -55,8 +55,11 @@ packer.startup(function(use)
 		},
 		tag = "nightly", -- optional, updated every week. (see issue #1193)
 	})
+	use("f-person/git-blame.nvim")
+	use("ThePrimeagen/harpoon")
+
+	-- colorschemes
 	use("folke/tokyonight.nvim")
 	use("rebelot/kanagawa.nvim")
-	use("ThePrimeagen/harpoon")
-	use("f-person/git-blame.nvim")
+	use("AlexvZyl/nordic.nvim")
 end)
