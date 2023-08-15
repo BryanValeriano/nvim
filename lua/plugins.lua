@@ -58,6 +58,10 @@ packer.startup(function(use)
 	use("f-person/git-blame.nvim")
 	use("ThePrimeagen/harpoon")
 
+	--debug
+	use("mfussenegger/nvim-dap")
+	--use("leoluz/nvim-dap-go")
+
 	-- colorschemes
 	use("folke/tokyonight.nvim")
 	use("rebelot/kanagawa.nvim")
