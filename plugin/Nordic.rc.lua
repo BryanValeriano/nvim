@@ -9,4 +9,4 @@ require("nordic").setup({
   },
 })
 
-vim.cmd("colorscheme nordic")
+--vim.cmd("colorscheme nordic")
