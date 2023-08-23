@@ -56,6 +56,7 @@ packer.startup(function(use)
 	})
 	use("f-person/git-blame.nvim")
 	use("ThePrimeagen/harpoon")
+	use("xiyaowong/transparent.nvim")
 
 	--debug
 	use("mfussenegger/nvim-dap")
@@ -65,4 +66,5 @@ packer.startup(function(use)
 	use("folke/tokyonight.nvim")
 	use("rebelot/kanagawa.nvim")
 	use("AlexvZyl/nordic.nvim")
+	use({ "rose-pine/neovim", as = "rose-pine" })
 end)
