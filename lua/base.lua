@@ -8,6 +8,7 @@ vim.wo.number = true
 vim.wo.relativenumber = true
 
 vim.opt.title = true
+vim.opt.background = dark
 vim.opt.autoindent = true
 vim.opt.smartindent = true
 vim.opt.hlsearch = true
