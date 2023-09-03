@@ -58,6 +58,9 @@ packer.startup(function(use)
 	use("ThePrimeagen/harpoon")
 	use("xiyaowong/transparent.nvim")
 
+	-- rust
+	use("simrat39/rust-tools.nvim")
+
 	--debug
 	use("mfussenegger/nvim-dap")
 	--use("leoluz/nvim-dap-go")

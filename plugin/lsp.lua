@@ -13,9 +13,22 @@ lsp.format_on_save({
 })
 
 lsp.on_attach(function(client, bufnr)
+	lsp.default_keymaps({ buffer = bufnr })
 	local opts = { buffer = bufnr, remap = false }
 	local bind = vim.keymap.set
 	bind("n", "gd", "<cmd>tab split | lua vim.lsp.buf.definition()<CR>", opts)
 end)
 
+lsp.skip_server_setup({ "rust_analyzer" })
+
 lsp.setup()
+
+local rust_tools = require("rust-tools")
+
+rust_tools.setup({
+	server = {
+		on_attach = function(_, bufnr)
+			vim.keymap.set("n", "<leader>ca", rust_tools.hover_actions.hover_actions, { buffer = bufnr })
+		end,
+	},
+})
