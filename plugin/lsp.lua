@@ -19,16 +19,25 @@ lsp.on_attach(function(client, bufnr)
 	bind("n", "gd", "<cmd>tab split | lua vim.lsp.buf.definition()<CR>", opts)
 end)
 
-lsp.skip_server_setup({ "rust_analyzer" })
+lsp.ensure_installed({
+	-- Replace these with whatever servers you want to install
+	"tsserver",
+	"eslint",
+	"rust_analyzer",
+	"gopls",
+	"prismals",
+})
 
+lsp.skip_server_setup({ "rust_analyzer" })
 lsp.setup()
 
 local rust_tools = require("rust-tools")
-
 rust_tools.setup({
 	server = {
 		on_attach = function(_, bufnr)
 			vim.keymap.set("n", "<leader>ca", rust_tools.hover_actions.hover_actions, { buffer = bufnr })
+			print("test Maroto")
 		end,
 	},
 })
+rust_tools.inlay_hints.enable()
