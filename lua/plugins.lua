@@ -74,6 +74,7 @@ packer.startup(function(use)
 	--use("leoluz/nvim-dap-go")
 
 	-- colorschemes
+	use({ "ellisonleao/gruvbox.nvim" })
 	use("folke/tokyonight.nvim")
 	use("rebelot/kanagawa.nvim")
 	use("AlexvZyl/nordic.nvim")
