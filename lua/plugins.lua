@@ -58,6 +58,14 @@ packer.startup(function(use)
 	use("ThePrimeagen/harpoon")
 	use("xiyaowong/transparent.nvim")
 
+	-- install without yarn or npm
+	use({
+		"iamcco/markdown-preview.nvim",
+		run = function()
+			vim.fn["mkdp#util#install"]()
+		end,
+	})
+
 	-- rust
 	use("simrat39/rust-tools.nvim")
 

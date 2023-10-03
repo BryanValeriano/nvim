@@ -22,6 +22,7 @@ end)
 lsp.ensure_installed({
 	-- Replace these with whatever servers you want to install
 	"tsserver",
+	"luau_lsp",
 	"eslint",
 	"rust_analyzer",
 	"gopls",
