@@ -19,7 +19,10 @@ require("gruvbox").setup({
 	inverse = true, -- invert background for search, diffs, statuslines and errors
 	contrast = "", -- can be "hard", "soft" or empty string
 	palette_overrides = {},
-	overrides = {},
+	overrides = {
+		--["@lsp.type.method"] = { bg = "#ff9900" },
+		["@lsp.type.interface"] = { italic = true },
+	},
 	dim_inactive = false,
 	transparent_mode = true,
 })
