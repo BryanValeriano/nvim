@@ -22,6 +22,7 @@ require("gruvbox").setup({
 	overrides = {
 		--["@lsp.type.method"] = { bg = "#ff9900" },
 		["@lsp.type.interface"] = { fg = "#f0e68c", italic = true },
+		["@lsp.type.function"] = { fg = "#b16286" },
 	},
 	dim_inactive = false,
 	transparent_mode = true,
