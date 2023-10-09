@@ -21,7 +21,7 @@ require("gruvbox").setup({
 	palette_overrides = {},
 	overrides = {
 		--["@lsp.type.method"] = { bg = "#ff9900" },
-		["@lsp.type.interface"] = { italic = true },
+		["@lsp.type.interface"] = { fg = "#f0e68c", italic = true },
 	},
 	dim_inactive = false,
 	transparent_mode = true,
