@@ -24,6 +24,7 @@ require("nvim-treesitter.configs").setup({
 		"rust",
 		"java",
 		"prisma",
+		"svelte",
 	},
 	autotag = {
 		enable = true,
