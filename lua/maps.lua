@@ -35,14 +35,3 @@ keymap.set('n', '<C-w><down>', '<C-w>-')
 
 -- NvimTree
 keymap.set('n', '<C-n>', '<cmd>:NvimTreeToggle<CR>',{noremap=true})
-
--- Harpoon
-local ui = require("harpoon.ui")
-local mark = require("harpoon.mark")
-vim.keymap.set("n", "<Space>a", mark.add_file)
-vim.keymap.set("n", "<Space>o", ui.toggle_quick_menu)
-
-vim.keymap.set("n", "<Space>h", function() ui.nav_file(1) end)
-vim.keymap.set("n", "<Space>j", function() ui.nav_file(2) end)
-vim.keymap.set("n", "<Space>k", function() ui.nav_file(3) end)
-vim.keymap.set("n", "<Space>l", function() ui.nav_file(4) end)

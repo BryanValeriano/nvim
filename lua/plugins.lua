@@ -55,7 +55,6 @@ packer.startup(function(use)
 		tag = "nightly", -- optional, updated every week. (see issue #1193)
 	})
 	use("f-person/git-blame.nvim")
-	use("ThePrimeagen/harpoon")
 	use("xiyaowong/transparent.nvim")
 
 	-- install without yarn or npm
