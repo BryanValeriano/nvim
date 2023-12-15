@@ -1,8 +1,9 @@
+local p = require("tokyodark.palette")
 require("tokyodark").setup({
 	transparent_background = true, -- set background to transparent
 	gamma = 1.00, -- adjust the brightness of the theme
 	styles = {
-		comments = { italic = true }, -- style for comments
+		comments = { italic = true, fg = "#5C6167" }, -- style for comments
 		keywords = { italic = true }, -- style for keywords
 		identifiers = { italic = true }, -- style for identifiers
 		functions = {}, -- style for functions
@@ -17,4 +18,4 @@ require("tokyodark").setup({
 	terminal_colors = true, -- enable terminal colors
 })
 
-vim.cmd("colorscheme tokyodark")
+-- vim.cmd("colorscheme tokyodark")
