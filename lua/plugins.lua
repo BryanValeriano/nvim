@@ -1,17 +1,21 @@
-local status, packer = pcall(require, "packer")
-if not status then
-	print("Packer is not installed")
-	return
+local lazypath = vim.fn.stdpath("data") .. "/lazy/lazy.nvim"
+if not vim.loop.fs_stat(lazypath) then
+	vim.fn.system({
+		"git",
+		"clone",
+		"--filter=blob:none",
+		"https://github.com/folke/lazy.nvim.git",
+		"--branch=stable", -- latest stable release
+		lazypath,
+	})
 end
+vim.opt.rtp:prepend(lazypath)
 
-vim.cmd([[packadd packer.nvim]])
-
-packer.startup(function(use)
-	use("wbthomason/packer.nvim")
-
-	use({
+local plugins = {
+	"wbthomason/packer.nvim",
+	{
 		"VonHeikemen/lsp-zero.nvim",
-		requires = {
+		dependencies = {
 			-- LSP Support
 			{ "neovim/nvim-lspconfig" },
 			{ "williamboman/mason.nvim" },
@@ -30,55 +34,57 @@ packer.startup(function(use)
 			-- Snippet Collection (Optional)
 			{ "rafamadriz/friendly-snippets" },
 		},
-	})
+	},
 
-	use("kyazdani42/nvim-web-devicons") -- File icons
-	use("nvim-lualine/lualine.nvim") -- Statusline
-	use("nvim-lua/plenary.nvim") -- Common utilities
-	use("onsails/lspkind-nvim") -- vscode-like pictograms
-	use("jose-elias-alvarez/null-ls.nvim") -- Use Neovim as a language server to inject LSP diagnostics, code actions, and more via Lua
+	"nvim-lualine/lualine.nvim", -- Statusline
+	"nvim-lua/plenary.nvim", -- Common utilities
+	"onsails/lspkind-nvim", -- vscode-like pictograms
+	"jose-elias-alvarez/null-ls.nvim", -- Use Neovim name a language server to inject LSP diagnostics, code actions, and more via Lua
 
-	use("nvim-treesitter/nvim-treesitter", { run = ":TSUpdate" })
+	{ "nvim-treesitter/nvim-treesitter", build = ":TSUpdate" },
 
-	use("windwp/nvim-autopairs")
-	use("windwp/nvim-ts-autotag")
-	use("nvim-telescope/telescope.nvim")
-	use("nvim-telescope/telescope-file-browser.nvim")
-	use("akinsho/nvim-bufferline.lua")
-	use("norcalli/nvim-colorizer.lua")
-	use({ "kkharji/lspsaga.nvim" }) -- nightly
-	use({
+	"windwp/nvim-autopairs",
+	"windwp/nvim-ts-autotag",
+	"nvim-telescope/telescope.nvim",
+	"nvim-telescope/telescope-file-browser.nvim",
+	"akinsho/nvim-bufferline.lua",
+	"norcalli/nvim-colorizer.lua",
+	"kkharji/lspsaga.nvim", -- nightly
+	{
 		"nvim-tree/nvim-tree.lua",
-		requires = {
+		dependencies = {
 			"nvim-tree/nvim-web-devicons", -- optional, for file icons
 		},
 		tag = "nightly", -- optional, updated every week. (see issue #1193)
-	})
-	use("f-person/git-blame.nvim")
-	use("xiyaowong/transparent.nvim")
+	},
+	"f-person/git-blame.nvim",
+	"xiyaowong/transparent.nvim",
 
 	-- install without yarn or npm
-	use({
+	{
 		"iamcco/markdown-preview.nvim",
-		run = function()
+		build = function()
 			vim.fn["mkdp#util#install"]()
 		end,
-	})
+	},
 
 	-- rust
-	use("simrat39/rust-tools.nvim")
+	"simrat39/rust-tools.nvim",
 
 	--debug
-	use("mfussenegger/nvim-dap")
-	--use("leoluz/nvim-dap-go")
+	"mfussenegger/nvim-dap",
 
 	-- colorschemes
-	use({ "ellisonleao/gruvbox.nvim" })
-	use("folke/tokyonight.nvim")
-	use("rebelot/kanagawa.nvim")
-	use("AlexvZyl/nordic.nvim")
-	use({ "rose-pine/neovim", as = "rose-pine" })
-	use("NLKNguyen/papercolor-theme")
-	use({ "catppuccin/nvim", as = "catppuccin" })
-	use({ "tiagovla/tokyodark.nvim" })
-end)
+	"ellisonleao/gruvbox.nvim",
+	"folke/tokyonight.nvim",
+	"rebelot/kanagawa.nvim",
+	"AlexvZyl/nordic.nvim",
+	{ "rose-pine/neovim", name = "rose-pine" },
+	"NLKNguyen/papercolor-theme",
+	{ "catppuccin/nvim", name = "catppuccin" },
+	"tiagovla/tokyodark.nvim",
+}
+
+local opts = {}
+
+require("lazy").setup(plugins, opts)
