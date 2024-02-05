@@ -22,7 +22,6 @@ end)
 require("mason").setup({})
 require("mason-lspconfig").setup({
 	ensure_installed = {
-		-- Replace these with whatever servers you want to install
 		"tsserver",
 		"luau_lsp",
 		"eslint",
@@ -41,6 +40,11 @@ require("mason-lspconfig").setup_handlers({
 					print("test Maroto")
 				end,
 			},
+		})
+	end,
+	["gopls"] = function()
+		require("lspconfig")["gopls"].setup({
+			on_attach = on_attach,
 		})
 	end,
 })
