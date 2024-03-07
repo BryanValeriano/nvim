@@ -16,7 +16,6 @@ require("nvim-treesitter.configs").setup({
 		"php",
 		"json",
 		"yaml",
-		"swift",
 		"css",
 		"html",
 		"lua",
