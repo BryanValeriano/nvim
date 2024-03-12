@@ -1,5 +1,8 @@
 vim.cmd("autocmd!")
 
+-- go monorepo
+vim.env.PATH = vim.env.VIM_PATH or vim.env.PATH
+
 vim.scriptencoding = "utf-8"
 vim.opt.encoding = "utf-8"
 vim.opt.fileencoding = "utf-8"
