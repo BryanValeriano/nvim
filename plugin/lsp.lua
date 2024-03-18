@@ -52,22 +52,26 @@ require("mason-lspconfig").setup_handlers({
 	end,
 	["gopls"] = function()
 		require("lspconfig")["gopls"].setup({
-			cmd = { "gopls", "-remote=auto", "-rpc.trace", "-v" },
-			on_attach = on_attach,
+      cmd = {'gopls', '-remote=auto', '-rpc.trace', '-v'},
+		  on_attach = on_attach,
 			capabilities = capabilities,
-			init_options = {
-				gofumpt = true,
-			},
-			settings = {
-				gopls = {
-					analyses = {
-						unusedparams = true,
-					},
-					staticcheck = true,
-				},
-			},
-		})
-	end,
+      root_dir = function(fname)
+        return require('lspconfig.util').root_pattern('go.mod', '.git')(fname) or require('lspconfig.util').path.dirname(fname)
+      end,
+      init_options = {
+        gofumpt= true
+      },
+      settings = {
+        gopls = {
+          semanticTokens = true,
+          analyses = {
+            unusedparams = true,
+          },
+          staticcheck = true,
+        },
+      },
+    })
+  end,
 })
 
 local rust_tools = require("rust-tools")
