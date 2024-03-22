@@ -8,9 +8,9 @@ capabilities.textDocument.completion.completionItem.snippetSupport = true
 capabilities.textDocument.completion.completionItem.preselectSupport = true
 capabilities.textDocument.completion.completionItem.insertReplaceSupport = true
 
-lsp.set_preferences({
-	set_lsp_keymaps = { omit = { "gd" } },
-})
+--lsp.set_preferences({
+--	set_lsp_keymaps = { omit = { "gd" } },
+--})
 
 lsp.format_on_save({
 	format_opts = {
@@ -23,7 +23,7 @@ lsp.on_attach(function(client, bufnr)
 	lsp.default_keymaps({ buffer = bufnr })
 	local opts = { buffer = bufnr, remap = false }
 	local bind = vim.keymap.set
-	bind("n", "gd", "<cmd>tab split | lua vim.lsp.buf.definition()<CR>", opts)
+	bind("n", "gD", "<cmd>tab split | lua vim.lsp.buf.definition()<CR>", opts)
 end)
 
 require("mason").setup({})
