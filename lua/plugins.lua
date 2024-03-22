@@ -36,6 +36,8 @@ local plugins = {
 		},
 	},
 
+	"j-hui/fidget.nvim", -- progress ui
+
 	"nvim-lualine/lualine.nvim", -- Statusline
 	"nvim-lua/plenary.nvim", -- Common utilities
 	"onsails/lspkind-nvim", -- vscode-like pictograms
