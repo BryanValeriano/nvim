@@ -84,6 +84,7 @@ local plugins = {
 	"NLKNguyen/papercolor-theme",
 	{ "catppuccin/nvim", name = "catppuccin" },
 	"tiagovla/tokyodark.nvim",
+  "JoosepAlviste/palenightfall.nvim",
 }
 
 local opts = {}
