@@ -59,9 +59,9 @@ require("mason-lspconfig").setup_handlers({
 				return require("lspconfig.util").root_pattern("go.mod", ".git")(fname)
 					or require("lspconfig.util").path.dirname(fname)
 			end,
-			init_options = {
-				-- gofumpt = true,
-			},
+			-- init_options = {
+			-- gofumpt = true,
+			--},
 			settings = {
 				gopls = {
 					semanticTokens = true,
