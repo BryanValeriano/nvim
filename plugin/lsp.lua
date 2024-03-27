@@ -60,7 +60,7 @@ require("mason-lspconfig").setup_handlers({
 					or require("lspconfig.util").path.dirname(fname)
 			end,
 			init_options = {
-				gofumpt = true,
+				-- gofumpt = true,
 			},
 			settings = {
 				gopls = {
