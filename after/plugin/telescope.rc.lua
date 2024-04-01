@@ -67,7 +67,16 @@ end)
 vim.keymap.set("n", ";e", function()
 	builtin.diagnostics()
 end)
-vim.keymap.set("n", "sf", function()
+
+-- live grep on current working directory
+vim.keymap.set("n", "tsr", function()
+	builtin.live_grep({
+		path = "%:p:h",
+		cwd = telescope_buffer_dir(),
+  })
+end)
+-- find file on current working directory
+vim.keymap.set("n", "tsf", function()
 	telescope.extensions.file_browser.file_browser({
 		path = "%:p:h",
 		cwd = telescope_buffer_dir(),

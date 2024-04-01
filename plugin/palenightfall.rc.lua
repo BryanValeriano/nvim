@@ -1,9 +1,9 @@
-require('palenightfall').setup({
-  transparent = true,
-    highlight_overrides = {
-    -- Check the exact highlight configuration format from the code
-    Normal = { fg = '#777777' },
-  },
-})
+-- require('palenightfall').setup({
+--   transparent = true,
+--     highlight_overrides = {
+--     -- Check the exact highlight configuration format from the code
+--     Normal = { fg = '#777777' },
+--   },
+-- })
 
--- im.cmd("colorscheme palenightfall")
+-- vim.cmd("colorscheme palenightfall")
