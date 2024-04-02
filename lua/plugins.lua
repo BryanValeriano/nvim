@@ -72,8 +72,11 @@ local plugins = {
 	-- rust
 	"simrat39/rust-tools.nvim",
 
-	--debug
+	-- debug
 	"mfussenegger/nvim-dap",
+
+	-- copilor
+	"github/copilot.vim",
 
 	-- colorschemes
 	"ellisonleao/gruvbox.nvim",
@@ -84,10 +87,10 @@ local plugins = {
 	"NLKNguyen/papercolor-theme",
 	{ "catppuccin/nvim", name = "catppuccin" },
 	"tiagovla/tokyodark.nvim",
-  --"JoosepAlviste/palenightfall.nvim",
-  'marko-cerovac/material.nvim',
-  'Mofiqul/dracula.nvim',
-  { "EdenEast/nightfox.nvim" },
+	--"JoosepAlviste/palenightfall.nvim",
+	"marko-cerovac/material.nvim",
+	"Mofiqul/dracula.nvim",
+	{ "EdenEast/nightfox.nvim" },
 }
 
 local opts = {}

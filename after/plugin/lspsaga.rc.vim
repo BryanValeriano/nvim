@@ -11,7 +11,7 @@ saga.init_lsp_saga {
   border_style = "round",
   code_action_prompt = {
     enable = false
-  }
+    }
 }
 
 EOF
