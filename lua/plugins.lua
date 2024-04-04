@@ -75,7 +75,7 @@ local plugins = {
 	-- debug
 	"mfussenegger/nvim-dap",
 
-	-- copilor
+	-- copilot
 	"github/copilot.vim",
 
 	-- colorschemes
