@@ -45,7 +45,6 @@ require("mason-lspconfig").setup_handlers({
 				capabilities = capabilities,
 				on_attach = function(_, bufnr)
 					vim.keymap.set("n", "<leader>ca", rust_tools.hover_actions.hover_actions, { buffer = bufnr })
-					print("test Maroto")
 				end,
 			},
 		})
@@ -77,6 +76,12 @@ require("mason-lspconfig").setup_handlers({
 					staticcheck = true,
 				},
 			},
+		})
+	end,
+	["tsserver"] = function()
+		require("lspconfig")["tsserver"].setup({
+			on_attach = lsp.on_attach,
+			capabilities = capabilities,
 		})
 	end,
 })
