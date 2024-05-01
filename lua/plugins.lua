@@ -12,7 +12,6 @@ end
 vim.opt.rtp:prepend(lazypath)
 
 local plugins = {
-	"wbthomason/packer.nvim",
 	{
 		"VonHeikemen/lsp-zero.nvim",
 		dependencies = {
@@ -44,6 +43,7 @@ local plugins = {
 	"jose-elias-alvarez/null-ls.nvim", -- Use Neovim name a language server to inject LSP diagnostics, code actions, and more via Lua
 
 	{ "nvim-treesitter/nvim-treesitter", build = ":TSUpdate" },
+	"nvim-treesitter/nvim-treesitter-context",
 
 	"windwp/nvim-autopairs",
 	"windwp/nvim-ts-autotag",
