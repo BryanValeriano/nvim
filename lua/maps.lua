@@ -35,3 +35,8 @@ keymap.set("n", "<C-w><down>", "<C-w>-")
 
 -- NvimTree
 keymap.set("n", "<C-n>", "<cmd>:NvimTreeToggle<CR>", { noremap = true })
+
+-- go to context
+vim.keymap.set("n", "[c", function()
+  require("treesitter-context").go_to_context(vim.v.count1)
+end, { silent = true })
