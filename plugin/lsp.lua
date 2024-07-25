@@ -35,10 +35,17 @@ require("mason-lspconfig").setup({
 		"rust_analyzer",
 		"gopls",
 		"prismals",
+		"thriftls",
 	},
 })
 
 require("mason-lspconfig").setup_handlers({
+	["thriftls"] = function()
+		require("lspconfig").thriftls.setup({
+			on_attach = on_attach,
+			capabilities = capabilities,
+		})
+	end,
 	["rust_analyzer"] = function()
 		require("rust-tools").setup({
 			server = {

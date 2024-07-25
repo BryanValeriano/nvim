@@ -69,6 +69,9 @@ local plugins = {
 		end,
 	},
 
+	-- syntax highlight for thrift
+	'solarnz/thrift.vim',
+
 	-- rust
 	"simrat39/rust-tools.nvim",
 
