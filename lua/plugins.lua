@@ -40,7 +40,13 @@ local plugins = {
 	"nvim-lualine/lualine.nvim", -- Statusline
 	"nvim-lua/plenary.nvim", -- Common utilities
 	"onsails/lspkind-nvim", -- vscode-like pictograms
-	"nvimtools/none-ls.nvim", -- Use Neovim name a language server to inject LSP diagnostics, code actions, and more via Lua
+
+	{
+		"nvimtools/none-ls.nvim", -- Use Neovim name a language server to inject LSP diagnostics, code actions, and more via Lua
+		dependencies = {
+			"nvimtools/none-ls-extras.nvim",
+		},
+	},
 
 	{ "nvim-treesitter/nvim-treesitter", build = ":TSUpdate" },
 	"nvim-treesitter/nvim-treesitter-context",
@@ -70,7 +76,7 @@ local plugins = {
 	},
 
 	-- syntax highlight for thrift
-	'solarnz/thrift.vim',
+	"solarnz/thrift.vim",
 
 	-- rust
 	"simrat39/rust-tools.nvim",

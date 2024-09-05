@@ -11,8 +11,7 @@ null_ls.setup({
 		-- null_ls.builtins.formatting.gofumpt,
 		null_ls.builtins.formatting.gofmt,
 		null_ls.builtins.formatting.goimports,
-		null_ls.builtins.diagnostics.eslint,
-		--null_ls.builtins.formatting.eslint,
+		require("none-ls.diagnostics.eslint_d"),
 		null_ls.builtins.completion.spell,
 	},
 	on_attach = function(client, bufnr)
