@@ -17,6 +17,7 @@ lsp.format_on_save({
 		async = false,
 		timeout_ms = 10000,
 	},
+	exclude = { "thrift" },
 })
 
 lsp.on_attach(function(client, bufnr)
