@@ -1,36 +1,38 @@
-local lsp = require("lsp-zero")
-lsp.preset("recommended")
+vim.opt.signcolumn = "yes"
+local lspconfig = require("lspconfig")
 
--- nvim-cmp capabilities
-local capabilities = vim.lsp.protocol.make_client_capabilities()
-capabilities.workspace.didChangeWatchedFiles.dynamicRegistration = false
-capabilities.textDocument.completion.completionItem.snippetSupport = true
-capabilities.textDocument.completion.completionItem.preselectSupport = true
-capabilities.textDocument.completion.completionItem.insertReplaceSupport = true
+-- Add cmp_nvim_lsp capabilities settings to lspconfig
+lspconfig.util.default_config.capabilities = vim.tbl_deep_extend(
+	"force",
+	lspconfig.util.default_config.capabilities,
+	require("cmp_nvim_lsp").default_capabilities()
+)
 
---lsp.set_preferences({
---	set_lsp_keymaps = { omit = { "gd" } },
---})
+-- Executes the callback function every time a
+-- language server is attached to a buffer.
+vim.api.nvim_create_autocmd("LspAttach", {
+	desc = "LSP actions",
+	callback = function(event)
+		local opts = { buffer = event.buf }
 
-lsp.format_on_save({
-	format_opts = {
-		async = false,
-		timeout_ms = 10000,
-	},
-	exclude = { "thrift" },
+		vim.keymap.set("n", "K", "<cmd>lua vim.lsp.buf.hover()<cr>", opts)
+		vim.keymap.set("n", "gd", "<cmd>lua vim.lsp.buf.definition()<cr>", opts)
+		vim.keymap.set("n", "gC", "<cmd>lua vim.lsp.buf.declaration()<cr>", opts)
+		vim.keymap.set("n", "gi", "<cmd>lua vim.lsp.buf.implementation()<cr>", opts)
+		vim.keymap.set("n", "go", "<cmd>lua vim.lsp.buf.type_definition()<cr>", opts)
+		vim.keymap.set("n", "gr", "<cmd>lua vim.lsp.buf.references()<cr>", opts)
+		vim.keymap.set("n", "gs", "<cmd>lua vim.lsp.buf.signature_help()<cr>", opts)
+		vim.keymap.set("n", "<F2>", "<cmd>lua vim.lsp.buf.rename()<cr>", opts)
+		vim.keymap.set({ "n", "x" }, "<F3>", "<cmd>lua vim.lsp.buf.format({async = true})<cr>", opts)
+		vim.keymap.set("n", "<F4>", "<cmd>lua vim.lsp.buf.code_action()<cr>", opts)
+		vim.keymap.set("n", "gD", "<cmd>tab split | lua vim.lsp.buf.definition()<CR>", opts)
+	end,
 })
-
-lsp.on_attach(function(client, bufnr)
-	lsp.default_keymaps({ buffer = bufnr })
-	local opts = { buffer = bufnr, remap = false }
-	local bind = vim.keymap.set
-	bind("n", "gD", "<cmd>tab split | lua vim.lsp.buf.definition()<CR>", opts)
-end)
 
 require("mason").setup({})
 require("mason-lspconfig").setup({
 	ensure_installed = {
-		"tsserver",
+		"ts_ls",
 		"luau_lsp",
 		"eslint",
 		"rust_analyzer",
@@ -86,9 +88,9 @@ require("mason-lspconfig").setup_handlers({
 			},
 		})
 	end,
-	["tsserver"] = function()
-		require("lspconfig")["tsserver"].setup({
-			on_attach = lsp.on_attach,
+	["ts_ls"] = function()
+		require("lspconfig")["ts_ls"].setup({
+			on_attach = on_attach,
 			capabilities = capabilities,
 		})
 	end,
