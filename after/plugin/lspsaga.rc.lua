@@ -20,7 +20,7 @@ end
 vim.keymap.set("n", "<C-j>", "<cmd>Lspsaga diagnostic_jump_next<CR>")
 vim.keymap.set("n", "K", "<cmd>Lspsaga hover_doc<CR>")
 vim.keymap.set("n", "<C-k>", "<cmd>Lspsaga signature_help<CR>")
-vim.keymap.set("n", "gh", "<cmd>Lspsaga lsp_finder<CR>")
+vim.keymap.set("n", "gh", "<cmd>Lspsaga finder<CR>")
 vim.keymap.set("n", "gp", "<cmd>Lspsaga preview_definition<CR>")
 --vim.keymap.set( gr <Cmd>Lspsaga rename<CR>
 -- nnoremap <silent> <C-a> <Cmd>Lspsaga code_action<CR>
