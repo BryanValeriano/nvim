@@ -9,11 +9,12 @@ require("lspsaga").setup({
 	outline = {
 		left_width = 2,
 	},
-	keys = {
-		tabenew = "<C-t>",
-		tabe = "t",
-		split = "s",
-		vsplit = "vs",
+	finder = {
+		keys = {
+			tabe = "t",
+			split = "s",
+			vsplit = "vs",
+		},
 	},
 })
 
