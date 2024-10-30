@@ -94,6 +94,12 @@ require("mason-lspconfig").setup_handlers({
 			capabilities = capabilities,
 		})
 	end,
+	["clangd"] = function()
+		require("lspconfig")["clangd"].setup({
+			on_attach = on_attach,
+			capabilities = capabilities,
+		})
+	end,
 })
 
 local rust_tools = require("rust-tools")

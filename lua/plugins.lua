@@ -103,6 +103,11 @@ local plugins = {
 	"marko-cerovac/material.nvim",
 	"Mofiqul/dracula.nvim",
 	{ "EdenEast/nightfox.nvim" },
+	{
+		"sainnhe/gruvbox-material",
+		lazy = false,
+		priority = 1000,
+	},
 }
 
 local opts = {}
