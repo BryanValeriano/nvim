@@ -68,9 +68,14 @@ require("mason-lspconfig").setup_handlers({
 				return require("lspconfig.util").root_pattern("go.mod", ".git")(fname)
 					or require("lspconfig.util").path.dirname(fname)
 			end,
-			-- init_options = {
-			-- gofumpt = true,
-			--},
+			init_options = {
+				-- gofumpt = true,
+				staticcheck = true,
+			},
+			flags = {
+				-- Don't spam LSP with changes. Wait a second between each.
+				debounce_text_changes = 1000,
+			},
 			settings = {
 				gopls = {
 					semanticTokens = true,
@@ -83,7 +88,6 @@ require("mason-lspconfig").setup_handlers({
 						compositeLiteralFields = true,
 						parameterNames = true,
 					},
-					staticcheck = true,
 				},
 			},
 		})
