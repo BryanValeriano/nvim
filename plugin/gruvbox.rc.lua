@@ -22,6 +22,7 @@ require("gruvbox").setup({
 	overrides = {
 		["@lsp.type.interface"] = { fg = "#f0e68c", italic = true },
 		["@lsp.type.function"] = { fg = "#b16286" },
+		["@lsp.type.method.go"] = { fg = "#b16286" },
 		["@method.call"] = { fg = "#b16286" },
 		["@function.method.call.go"] = { fg = "#b16286" },
 		["@function.method.go"] = { fg = "#b16286" },
@@ -29,5 +30,5 @@ require("gruvbox").setup({
 	dim_inactive = false,
 	transparent_mode = true,
 })
--- vim.o.background = "dark" -- or "light" for light mode
--- vim.cmd("colorscheme gruvbox")
+vim.o.background = "dark" -- or "light" for light mode
+vim.cmd("colorscheme gruvbox")
