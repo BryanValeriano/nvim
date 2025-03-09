@@ -105,7 +105,7 @@ require("mason-lspconfig").setup_handlers({
 		})
 	end,
 	["luau_lsp"] = function()
-		require("lspconfig")["clangd"].setup({
+		require("lspconfig")["luau_lsp"].setup({
 			on_attach = on_attach,
 			capabilities = capabilities,
 		})

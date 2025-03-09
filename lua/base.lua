@@ -68,8 +68,8 @@ vim.api.nvim_create_autocmd("BufWritePre", {
 	command = "lua vim.lsp.buf.format()",
 })
 
-vim.api.nvim_create_autocmd("BufWritePre", {
-	--buffer = bufnr,
-	pattern = { "*.ts", "*.js", "*.tsx", "*.jsx" },
-	command = "EslintFixAll",
-})
+-- vim.api.nvim_create_autocmd("BufWritePre", {
+-- 	--buffer = bufnr,
+-- 	pattern = { "*.ts", "*.js", "*.tsx", "*.jsx" },
+-- 	command = "EslintFixAll",
+-- })
