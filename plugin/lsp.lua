@@ -39,6 +39,7 @@ require("mason-lspconfig").setup({
 		"gopls",
 		"prismals",
 		"thriftls",
+		"pyright",
 	},
 })
 
@@ -106,6 +107,12 @@ require("mason-lspconfig").setup_handlers({
 	end,
 	["luau_lsp"] = function()
 		require("lspconfig")["luau_lsp"].setup({
+			on_attach = on_attach,
+			capabilities = capabilities,
+		})
+	end,
+	["pyright"] = function()
+		require("lspconfig")["pyright"].setup({
 			on_attach = on_attach,
 			capabilities = capabilities,
 		})
