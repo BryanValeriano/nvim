@@ -1,0 +1,17 @@
+<<<<<<< HEAD
+=======
+# First ignore everything
+*
+
+# Include all directories
+!*/
+
+# Then include only the files we want in ads_platform
+!src/code.uber.internal/identity/**
+!src/code.uber.internal/infra/envoy*/**
+!src/code.uber.internal/engsec/**
+!src/code.uber.internal/e2e/**
+!idl/code.uber.internal/identity/**
+!config/infra/**
+>>>>>>> Snippet
+
