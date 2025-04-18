@@ -3,4 +3,5 @@ require("nvim-navic").setup({
     auto_attach = true,
     preference = nil,
   },
+  highlight = true,
 })
