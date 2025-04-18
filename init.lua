@@ -10,12 +10,15 @@ vim.g.python3_host_prog = "/usr/bin/python3"
 vim.wo.number = true
 vim.wo.relativenumber = true
 
-_G.get_navic_winbar = function()
-  local navic = require("nvim-navic")
+local navic = require("nvim-navic")
+function NavicWithOffset()
   if navic.is_available() then
-    return navic.get_location() or ""
+    -- Adjust spaces as desired
+    local offset = "    " -- four spaces on the left
+    return offset .. navic.get_location()
+  else
+    return ""
   end
-  return ""
 end
 
-vim.o.winbar = "%{%v:lua.get_navic_winbar()%}"
+vim.o.winbar = "%{%v:lua.NavicWithOffset()%}"
