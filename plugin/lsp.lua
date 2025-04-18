@@ -131,28 +131,3 @@ require("mason-lspconfig").setup_handlers({
 
 -- Optional rust inlay hints
 rust_tools.inlay_hints.enable()
-
-require("lspconfig.configs").ulsp = {
-  default_config = {
-    cmd = { "socat", "-", "tcp:localhost:27883,ignoreeof" },
-    flags = {
-      debounce_text_changes = 1000,
-    },
-    on_attach = on_attach,
-    capabilities = capabilities,
-    filetypes = { "go", "java" },
-    root_dir = function(fname)
-      return lspconfig.util.find_git_ancestor(fname) or lspconfig.util.path.dirname(fname)
-    end,
-    single_file_support = false,
-    docs = {
-      description = [[
-        uLSP brought to you by the IDE team!
-        By utilizing uLSP in Neovim, you acknowledge that this integration is provided 'as-is' with no warranty, express or implied.
-        We make no guarantees regarding its functionality, performance, or suitability for any purpose, and absolutely no support will be provided.
-        Use at your own risk, and may the code gods have mercy on your soul
-      ]],
-    },
-  },
-}
-require("lspconfig")["ulsp"].setup({ ... })
