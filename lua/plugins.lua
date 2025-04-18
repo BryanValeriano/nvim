@@ -88,8 +88,11 @@ local plugins = {
   "solarnz/thrift.vim",
 
   -- rust
-  "simrat39/rust-tools.nvim",
-
+  {
+    "mrcjkb/rustaceanvim",
+    version = "^6", -- Recommended
+    lazy = false, -- This plugin is already lazy
+  },
   -- debug
   "mfussenegger/nvim-dap",
   { "rcarriga/nvim-dap-ui",            dependencies = { "mfussenegger/nvim-dap", "nvim-neotest/nvim-nio" } },

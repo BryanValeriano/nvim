@@ -1,7 +1,6 @@
 vim.opt.signcolumn = "yes"
 
 local lspconfig = require("lspconfig")
-local rust_tools = require("rust-tools")
 
 -- Capabilities
 local capabilities = vim.tbl_deep_extend(
@@ -63,19 +62,6 @@ require("mason-lspconfig").setup_handlers({
       capabilities = capabilities,
     })
   end,
-  ["rust_analyzer"] = function()
-    rust_tools.setup({
-      server = {
-        capabilities = capabilities,
-        on_attach = function(_, bufnr)
-          on_attach(_, bufnr)
-          vim.keymap.set("n", "<leader>ca", function()
-            rust_tools.hover_actions.hover_actions()
-          end, { buffer = bufnr })
-        end,
-      },
-    })
-  end,
   ["gopls"] = function()
     lspconfig.gopls.setup({
       cmd = { "gopls", "-remote=auto", "-rpc.trace", "-v" },
@@ -132,6 +118,3 @@ require("mason-lspconfig").setup_handlers({
     })
   end,
 })
-
--- Optional rust inlay hints
-rust_tools.inlay_hints.enable()
