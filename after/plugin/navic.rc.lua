@@ -3,5 +3,4 @@ require("nvim-navic").setup({
     auto_attach = true,
     preference = nil,
   },
-  lazy_update_context = true,
 })
