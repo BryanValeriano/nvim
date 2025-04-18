@@ -10,20 +10,9 @@ local capabilities = vim.tbl_deep_extend(
   require("cmp_nvim_lsp").default_capabilities()
 )
 
-local navic = require("nvim-navic")
-local function get_navic_capable_client(bufnr)
-  for _, client in ipairs(vim.lsp.get_active_clients({ bufnr = bufnr })) do
-    if client.server_capabilities and client.server_capabilities.documentSymbolProvider then
-      return client
-    end
-  end
-  return nil
-end
-
 -- Shared on_attach function
 local on_attach = function(client, bufnr)
   local opts = { buffer = bufnr }
-
   vim.keymap.set("n", "K", "<cmd>lua vim.lsp.buf.hover()<cr>", opts)
   vim.keymap.set("n", "gd", "<cmd>lua vim.lsp.buf.definition()<cr>", opts)
   vim.keymap.set("n", "gC", "<cmd>lua vim.lsp.buf.declaration()<cr>", opts)
@@ -35,27 +24,16 @@ local on_attach = function(client, bufnr)
   vim.keymap.set({ "n", "x" }, "<F3>", "<cmd>lua vim.lsp.buf.format({async = true})<cr>", opts)
   vim.keymap.set("n", "<F4>", "<cmd>lua vim.lsp.buf.code_action()<cr>", opts)
   vim.keymap.set("n", "gD", "<cmd>tab split | lua vim.lsp.buf.definition()<CR>", opts)
-  if client.server_capabilities.documentSymbolProvider and navic.is_available(bufnr) then
-    vim.schedule(function()
-      pcall(navic.attach, client, bufnr)
-    end)
-    vim.api.nvim_create_autocmd({ "BufEnter", "CursorHold", "CursorMoved" }, {
-      buffer = bufnr,
-      callback = function()
-        if navic.is_available() then
-          vim.wo.winbar = navic.get_location()
-        end
-      end,
-    })
-  end
 end
 
--- Setup LSP autocommand
+--- Setup LSP autocommand - ensure this still calls your modified on_attach
 vim.api.nvim_create_autocmd("LspAttach", {
   desc = "LSP actions",
   callback = function(event)
     local client = vim.lsp.get_client_by_id(event.data.client_id)
-    on_attach(client, event.buf)
+    if client then
+      on_attach(client, event.buf)
+    end
   end,
 })
 
@@ -153,3 +131,28 @@ require("mason-lspconfig").setup_handlers({
 
 -- Optional rust inlay hints
 rust_tools.inlay_hints.enable()
+
+require("lspconfig.configs").ulsp = {
+  default_config = {
+    cmd = { "socat", "-", "tcp:localhost:27883,ignoreeof" },
+    flags = {
+      debounce_text_changes = 1000,
+    },
+    on_attach = on_attach,
+    capabilities = capabilities,
+    filetypes = { "go", "java" },
+    root_dir = function(fname)
+      return lspconfig.util.find_git_ancestor(fname) or lspconfig.util.path.dirname(fname)
+    end,
+    single_file_support = false,
+    docs = {
+      description = [[
+        uLSP brought to you by the IDE team!
+        By utilizing uLSP in Neovim, you acknowledge that this integration is provided 'as-is' with no warranty, express or implied.
+        We make no guarantees regarding its functionality, performance, or suitability for any purpose, and absolutely no support will be provided.
+        Use at your own risk, and may the code gods have mercy on your soul
+      ]],
+    },
+  },
+}
+require("lspconfig")["ulsp"].setup({ ... })
