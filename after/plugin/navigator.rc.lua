@@ -21,6 +21,19 @@ require("navigator").setup({
       func = require("navigator.diagnostics").goto_next,
       desc = "next diagnostics error or fallback",
     },
+    {
+      key = "zK", -- just to remove the default gD mapping
+      func = vim.lsp.buf.declaration,
+      desc = "declaration",
+    },
+    {
+      key = "gD",
+      func = function()
+        vim.cmd("tab split") -- Open a new tab first
+        require("navigator.definition").definition()
+      end,
+      desc = "tabnew definition",
+    },
   },
 })
 
