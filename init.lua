@@ -10,6 +10,7 @@ vim.g.python3_host_prog = "/usr/bin/python3"
 vim.wo.number = true
 vim.wo.relativenumber = true
 
+-- winbar
 local navic = require("nvim-navic")
 function NavicWithOffset()
   if navic.is_available() then
@@ -21,4 +22,14 @@ function NavicWithOffset()
   end
 end
 
-vim.o.winbar = "%{%v:lua.NavicWithOffset()%}"
+vim.api.nvim_create_autocmd("FileType", {
+  pattern = "*",
+  callback = function(args)
+    local filetype = vim.bo[args.buf].filetype
+    if filetype and string.find(filetype, "^NvimTree") then
+      return
+    else
+      vim.wo.winbar = "%{%v:lua.NavicWithOffset()%}"
+    end
+  end,
+})
