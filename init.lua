@@ -22,14 +22,4 @@ function NavicWithOffset()
   end
 end
 
-vim.api.nvim_create_autocmd("FileType", {
-  pattern = "*",
-  callback = function(args)
-    local filetype = vim.bo[args.buf].filetype
-    if filetype and string.find(filetype, "^NvimTree") then
-      return
-    else
-      vim.wo.winbar = "%{%v:lua.NavicWithOffset()%}"
-    end
-  end,
-})
+vim.wo.winbar = "%{%v:lua.NavicWithOffset()%}"
