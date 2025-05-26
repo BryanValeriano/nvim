@@ -9,7 +9,7 @@ lualine.setup({
     theme = "auto",
     section_separators = { left = "", right = "" },
     component_separators = { left = "", right = "" },
-    disabled_filetypes = {},
+    disabled_filetypes = { "NvimTree" },
   },
   sections = {
     lualine_a = { "mode" },
@@ -26,9 +26,9 @@ lualine.setup({
         "diagnostics",
         sources = { "nvim_diagnostic" },
         symbols = {
-          error = " ",
+          error = "✘ ",
           warn = " ",
-          info = " ",
+          info = " ",
           hint = " ",
         },
       },
